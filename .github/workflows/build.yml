@@ -20,9 +20,9 @@ jobs:
             repository: flatek/esp32mimiclaw  
             token: ${{ secrets.PAT }}
             ref: main 
-            path:
+            path: 
             
-       -name: print token
+       - name: print token
         shell: bash
         run: echo "123"
               
