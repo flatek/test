@@ -22,9 +22,10 @@ jobs:
             ref: main 
             path: 
             
-       - name: print token
+      - name: print token
         shell: bash
-        run: echo "123"
+        run: |
+            echo $token
               
       - name: Build firmware (ESP32-S3)
         shell: bash
@@ -34,10 +35,15 @@ jobs:
           idf.py fullclean
           idf.py build
           
+      - name: Debug list files
+        run: |
+          pwd
+          ls -la
+          ls -la build          
 # 上传 bin 文件作为 Artifact（关键步骤）
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: bin file          # Artifact 名称
-          path: /__w/test/test/build/*       # bin 文件路径，支持通配符如 ./bin/*
+          path: build/*       # bin 文件路径，支持通配符如 ./bin/*
           retention-days: 30       # 可选：保留天数（1-90）
