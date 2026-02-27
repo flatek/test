@@ -18,9 +18,7 @@ jobs:
         with:
             #repository: memovai/mimiclaw
             repository: flatek/esp32mimiclaw  
-            PAT: ${{ secrets.PAT }}
-       
-        
+            PAT: ${{ secrets.namexx }} 
             ref: main 
             path: 
             
