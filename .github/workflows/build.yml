@@ -1,4 +1,4 @@
-name: Build
+name: Build_other
 
 on:
   push:
@@ -21,12 +21,7 @@ jobs:
             token: ${{ secrets.PAT }}
             ref: main 
             path: 
-            
-      - name: print token
-        shell: bash
-        run: |
-            echo $token
-              
+             
       - name: Build firmware (ESP32-S3)
         shell: bash
         run: |
@@ -39,11 +34,12 @@ jobs:
         run: |
           pwd
           ls -la
-          ls -la build          
+          ls -la build    
+          ls *.bin build
 # 上传 bin 文件作为 Artifact（关键步骤）
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: bin file          # Artifact 名称
           path: build/*       # bin 文件路径，支持通配符如 ./bin/*
-          retention-days: 30       # 可选：保留天数（1-90）
+          retention-days: 1       # 可选：保留天数（1-90）
