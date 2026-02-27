@@ -20,7 +20,11 @@ jobs:
             repository: flatek/esp32mimiclaw  
             token: ${{ secrets.PAT }}
             ref: main 
-            path: 
+            path:
+            
+       -name: print token
+        shell: bash
+        run: echo "123"
               
       - name: Build firmware (ESP32-S3)
         shell: bash
