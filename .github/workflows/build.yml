@@ -17,8 +17,8 @@ jobs:
         uses: actions/checkout@v4
         with:
             #repository: memovai/mimiclaw
-            repository: flatek/esp32mimiclaw
-            token: ${{ secrets.PAT }}  
+            repository: flatek/esp32mimiclaw  
+            token: ${{ secrets.PAT }} 
             ref: main 
             path: 
               
