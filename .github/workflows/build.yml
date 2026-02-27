@@ -16,9 +16,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-              repository: memovai/mimiclaw
-              ref: main 
-              path: 
+            repository: memovai/mimiclaw
+            ref: main 
+            path: 
               
       - name: Build firmware (ESP32-S3)
         shell: bash
@@ -27,3 +27,10 @@ jobs:
           idf.py set-target esp32s3
           idf.py fullclean
           idf.py build
+# 上传 bin 文件作为 Artifact（关键步骤）
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-binary          # Artifact 名称
+          path: ./bin/*       # bin 文件路径，支持通配符如 ./bin/*
+          retention-days: 30       # 可选：保留天数（1-90）
